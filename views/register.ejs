@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+
+    <link rel="stylesheet" href="css/form.css">
+
+</head>
+<body>
+     
+    <div class="alert-box">
+        <p class="alert"></p>
+         
+    </div>
+    <form action="/register"  method="post">
+
+        <div class="form">
+            <h1 class="heading">Register</h1>
+            <input type="text" class="name" placeholder="name" autocomplete="off" name="name" required>
+            <input type="email" placeholder="email" autocomplete="off" name="email" required>
+            <input type="password" placeholder="password" autocomplete="off" name="password" class="password" required>
+            <input type="password" placeholder="Confirmpassword" autocomplete="off" name="cpassword"   class="cpassword" required>
+            <button onclick="getValue()" class="submit-btn">register</button>
+            <a href="/login" class="link">already have an account ? log in here</a>
+        </div>
+    </form>
+
+    <script>
+        const form =[...document.querySelector('.form').children];
+        form.forEach((item, i) => {
+             setTimeout(() => {
+              item.style.opacity = 1;
+             }, i*100);
+         })
+       
+         function getValue(){
+            const name_value = document.querySelector(".name").value;
+            const pass = document.querySelector('.password').value;
+            const cpass = document.querySelector('.cpassword').value;
+            if(pass!=cpass){
+                alert("reconfirm the password");
+            }
+            else{
+                alert("successfully registered");
+            }
+           sessionStorage.name = name_value;
+         }
+
+    </script>
+
+</body>
+</html>
